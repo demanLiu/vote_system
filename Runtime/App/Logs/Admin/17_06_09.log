@@ -1,0 +1,253 @@
+[ 2017-06-09T13:21:14+08:00 ] 10.28.80.143 /index.php?m=Admin&c=Group&a=add
+NOTIC: [2] mkdir(): File exists /data1/www/laravel/cloud/liuhuan/vote_system/ThinkPHP/Library/Think/Build.class.php 第 110 行.
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000016s ]
+SQL: SHOW COLUMNS FROM `zs_hooks` [ RunTime:0.0012s ]
+SQL: SELECT `name`,`addons` FROM `zs_hooks`  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_addons` [ RunTime:0.0008s ]
+SQL: SELECT `id`,`name` FROM `zs_addons` WHERE `status` = 1 AND `name` IN ('LocalComment')  [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name` FROM `zs_addons` WHERE `status` = 1 AND `name` IN ('Avatar')  [ RunTime:0.0004s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.014961s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015162s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000732s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000861s ]
+SQL: SHOW COLUMNS FROM `zs_config` [ RunTime:0.0008s ]
+SQL: SELECT `type`,`name`,`value` FROM `zs_config` WHERE `status` = 1  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `zs_group` WHERE `status` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0008s ]
+SQL: SELECT `id`,`name`,`group_id`,`title`,`remark`,`icon` FROM `zs_node` WHERE `level` = 2 AND `status` = 1 AND `pid` = 1 ORDER BY sort asc  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `zs_addons` [ RunTime:0.0007s ]
+SQL: SELECT `title`,`name` FROM `zs_addons` WHERE ( status=1 AND has_adminlist=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `zs_node` WHERE `remark` = 'add' AND `name` = 'Group' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id` FROM `zs_node` WHERE `name` = 'Group' AND `remark` = '' AND `level` = 2 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `zs_node` WHERE `level` = 3 AND `name` = 'add' AND `pid` = 84 LIMIT 1   [ RunTime:0.0006s ]
+SQL: SELECT * FROM `zs_node` WHERE `id` = 84 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `zs_ucenter_member` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0009s ]
+SQL: SELECT `nickname` FROM `zs_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zs_avatar` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `zs_avatar` WHERE `uid` = 1 AND `status` = 1 AND `is_temp` = 0 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: nickname /data1/www/laravel/cloud/liuhuan/vote_system/App/Common/Common/user.php 第 356 行.
+INFO: [ view_begin ] --START--
+INFO: Run Common\Behavior\basictemplateBehavior [ RunTime:0.000431s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.000545s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000081s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000164s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006616s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006696s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000188s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000257s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000488s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000579s ]
+
+[ 2017-06-09T13:21:21+08:00 ] 10.28.80.143 /index.php?m=Admin&c=Group&a=insert
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.002120s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002831s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000766s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000896s ]
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `zs_group` WHERE `status` = 1 ORDER BY sort asc  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0007s ]
+SQL: SELECT `id`,`name`,`group_id`,`title`,`remark`,`icon` FROM `zs_node` WHERE `level` = 2 AND `status` = 1 AND `pid` = 1 ORDER BY sort asc  [ RunTime:0.0009s ]
+SQL: SHOW COLUMNS FROM `zs_addons` [ RunTime:0.0007s ]
+SQL: SELECT `title`,`name` FROM `zs_addons` WHERE ( status=1 AND has_adminlist=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `zs_node` WHERE `remark` = 'insert' AND `name` = 'Group' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT `id` FROM `zs_node` WHERE `name` = 'Group' AND `remark` = '' AND `level` = 2 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT * FROM `zs_node` WHERE `level` = 3 AND `name` = 'insert' AND `pid` = 84 LIMIT 1   [ RunTime:0.0007s ]
+SQL: SELECT * FROM `zs_node` WHERE `id` = 84 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `zs_ucenter_member` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0006s ]
+SQL: SELECT `nickname` FROM `zs_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zs_avatar` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `zs_avatar` WHERE `uid` = 1 AND `status` = 1 AND `is_temp` = 0 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: nickname /data1/www/laravel/cloud/liuhuan/vote_system/App/Common/Common/user.php 第 356 行.
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `zs_group` WHERE `name` = '11' LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `zs_group` (`name`,`icon`,`title`,`sort`,`status`,`create_time`) VALUES ('11','1','1','1','1','1496985681') [ RunTime:0.0005s ]
+
+[ 2017-06-09T13:21:21+08:00 ] 10.28.80.143 /index.php?m=Admin&c=Group&a=insert
+NOTIC: [8] Undefined index: navTabId /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 446 行.
+SQL: SHOW COLUMNS FROM `zs_syslogs` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0005s ]
+SQL: SELECT `title` FROM `zs_node` WHERE `name` = 'Group' AND `level` = 2 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `zs_node` WHERE `name` = 'insert' AND `level` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `zs_syslogs` (`modulename`,`actionname`,`opname`,`message`,`username`,`userid`,`userip`,`create_time`) VALUES ('一级菜单管理','写入','','新增成功!','admin','1','10.28.80.143','1496985681') [ RunTime:0.0004s ]
+
+[ 2017-06-09T13:21:24+08:00 ] 10.28.80.143 /index.php?m=Admin&c=Group&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001685s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002239s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000611s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000763s ]
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0012s ]
+SQL: SELECT * FROM `zs_group` WHERE `status` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0004s ]
+SQL: SELECT `id`,`name`,`group_id`,`title`,`remark`,`icon` FROM `zs_node` WHERE `level` = 2 AND `status` = 1 AND `pid` = 1 ORDER BY sort asc  [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `zs_addons` [ RunTime:0.0005s ]
+SQL: SELECT `title`,`name` FROM `zs_addons` WHERE ( status=1 AND has_adminlist=1 )  [ RunTime:0.0003s ]
+NOTIC: [8] Undefined offset: 503 /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 117 行.
+NOTIC: [2] Invalid argument supplied for foreach() /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 117 行.
+NOTIC: [8] Undefined offset: 503 /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 139 行.
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `zs_node` WHERE `remark` = 'index' AND `name` = 'Group' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `zs_node` WHERE `level` = 2 AND `name` = 'Group' AND `remark` = '' LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0004s ]
+SQL: SELECT `id`,`title` FROM `zs_group`  [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `zs_ucenter_member` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0005s ]
+SQL: SELECT `nickname` FROM `zs_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `zs_avatar` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `zs_avatar` WHERE `uid` = 1 AND `status` = 1 AND `is_temp` = 0 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: nickname /data1/www/laravel/cloud/liuhuan/vote_system/App/Common/Common/user.php 第 356 行.
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `zs_group`  [ RunTime:0.0002s ]
+INFO: [ view_begin ] --START--
+INFO: Run Common\Behavior\basictemplateBehavior [ RunTime:0.000308s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.000386s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000121s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000186s ]
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined variable: currentid /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 162 行.
+NOTIC: [8] Undefined index: name /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 168 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016161s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016264s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000142s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000223s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000407s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000541s ]
+
+[ 2017-06-09T13:21:26+08:00 ] 10.28.80.143 /index.php?m=Admin&c=Group&a=foreverdelete&id=503
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000099s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001564s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002235s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000569s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000693s ]
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `zs_group` WHERE `status` = 1 ORDER BY sort asc  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0005s ]
+SQL: SELECT `id`,`name`,`group_id`,`title`,`remark`,`icon` FROM `zs_node` WHERE `level` = 2 AND `status` = 1 AND `pid` = 1 ORDER BY sort asc  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `zs_addons` [ RunTime:0.0006s ]
+SQL: SELECT `title`,`name` FROM `zs_addons` WHERE ( status=1 AND has_adminlist=1 )  [ RunTime:0.0002s ]
+NOTIC: [8] Undefined offset: 503 /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 117 行.
+NOTIC: [2] Invalid argument supplied for foreach() /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 117 行.
+NOTIC: [8] Undefined offset: 503 /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 139 行.
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `zs_node` WHERE `remark` = 'foreverdelete' AND `name` = 'Group' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `id` FROM `zs_node` WHERE `name` = 'Group' AND `remark` = '' AND `level` = 2 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SELECT * FROM `zs_node` WHERE `level` = 3 AND `name` = 'foreverdelete' AND `pid` = 84 LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `zs_node` WHERE `id` = 84 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `zs_ucenter_member` [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0005s ]
+SQL: SELECT `nickname` FROM `zs_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `zs_avatar` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `zs_avatar` WHERE `uid` = 1 AND `status` = 1 AND `is_temp` = 0 LIMIT 1   [ RunTime:0.0002s ]
+NOTIC: [8] Undefined index: nickname /data1/www/laravel/cloud/liuhuan/vote_system/App/Common/Common/user.php 第 356 行.
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0005s ]
+SQL: DELETE FROM `zs_group` WHERE `id` IN ('503') [ RunTime:0.0003s ]
+
+[ 2017-06-09T13:21:26+08:00 ] 10.28.80.143 /index.php?m=Admin&c=Group&a=foreverdelete&id=503
+NOTIC: [8] Undefined index: navTabId /data1/www/laravel/cloud/liuhuan/vote_system/App/Admin/Controller/CommonController.class.php 第 446 行.
+SQL: SHOW COLUMNS FROM `zs_syslogs` [ RunTime:0.0005s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `zs_node` WHERE `name` = 'Group' AND `level` = 2 LIMIT 1   [ RunTime:0.0004s ]
+SQL: SELECT `title` FROM `zs_node` WHERE `name` = 'foreverdelete' AND `level` = 3 LIMIT 1   [ RunTime:0.0003s ]
+SQL: INSERT INTO `zs_syslogs` (`modulename`,`actionname`,`opname`,`message`,`username`,`userid`,`userip`,`create_time`) VALUES ('一级菜单管理','删除','','删除成功！','admin','1','10.28.80.143','1496985686') [ RunTime:0.0003s ]
+
+[ 2017-06-09T13:21:28+08:00 ] 10.28.80.143 /index.php?m=Admin&c=Group&a=index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000034s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.001557s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002140s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000494s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000599s ]
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `zs_group` WHERE `status` = 1 ORDER BY sort asc  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0012s ]
+SQL: SELECT `id`,`name`,`group_id`,`title`,`remark`,`icon` FROM `zs_node` WHERE `level` = 2 AND `status` = 1 AND `pid` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `zs_addons` [ RunTime:0.0009s ]
+SQL: SELECT `title`,`name` FROM `zs_addons` WHERE ( status=1 AND has_adminlist=1 )  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_node` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `zs_node` WHERE `remark` = 'index' AND `name` = 'Group' LIMIT 1   [ RunTime:0.0005s ]
+SQL: SELECT * FROM `zs_node` WHERE `level` = 2 AND `name` = 'Group' AND `remark` = '' LIMIT 1   [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0006s ]
+SQL: SELECT `id`,`title` FROM `zs_group`  [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `zs_ucenter_member` [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `zs_member` [ RunTime:0.0006s ]
+SQL: SELECT `nickname` FROM `zs_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0003s ]
+SQL: SHOW COLUMNS FROM `zs_avatar` [ RunTime:0.0005s ]
+SQL: SELECT * FROM `zs_avatar` WHERE `uid` = 1 AND `status` = 1 AND `is_temp` = 0 LIMIT 1   [ RunTime:0.0003s ]
+NOTIC: [8] Undefined index: nickname /data1/www/laravel/cloud/liuhuan/vote_system/App/Common/Common/user.php 第 356 行.
+SQL: SHOW COLUMNS FROM `zs_group` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `zs_group`  [ RunTime:0.0003s ]
+INFO: [ view_begin ] --START--
+INFO: Run Common\Behavior\basictemplateBehavior [ RunTime:0.000465s ]
+INFO: [ view_begin ] --END-- [ RunTime:0.000583s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000128s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000240s ]
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined index: hassub /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 58 行.
+NOTIC: [8] Undefined variable: currentid /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 162 行.
+NOTIC: [8] Undefined index: name /data1/www/laravel/cloud/liuhuan/vote_system/Runtime/App/Cache/Admin/1547b10ba2568b31c225e15ea640b8ac.php 第 168 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022725s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022821s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000195s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000273s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000692s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000791s ]
+
