@@ -84,6 +84,7 @@ class CommonController extends Controller {
 			$where ['status'] = 1;
 			$where ['pid'] = 1;
 			$list = $node->where($where)->field('id,name,group_id,title,remark,icon')->order('sort asc')->select();
+//            print_r($groups);
 			//获得所有第二级别，并且是pid为1的菜单项
 			 
 			if($_SESSION[C('USER_AUTH_KEY')]!=1)
@@ -377,7 +378,6 @@ class CommonController extends Controller {
 		
 			//模板赋值显示
 			$this->assign("map", $map);
-			
 			$this->assign('list', $voList);
 
 		
@@ -459,7 +459,7 @@ class CommonController extends Controller {
 		$result['message'] = $info; // dwzjs
 		$result['forwardUrl'] = $forwardUrl;
 		$result['rel'] = $rel;
-			
+
 		if (empty($type))
 		$type = C('DEFAULT_AJAX_RETURN');
 		if (strtoupper($type) == 'JSON') {
@@ -489,7 +489,6 @@ class CommonController extends Controller {
 			$data = $this->before_insert($data);
 			
 		}
-		
 		//保存当前数据对象
 		$list = $model->data($data)->add();
 		

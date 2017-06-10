@@ -6,14 +6,7 @@
 <form id="formsearch" action="{:U('index')}" method="post">
                                
 <div class="example-code">
-  <div class="form-label float-left" >
-                <label>选择添加分类类型：</label>
-                </div>
-               <select name="type" data-container="body"  id="j_type" class="selectpicker show-tick" data-style="btn medium ui-state-default" data-width="auto">
-                               <volist name="Think.config.CATE_TYPE" id="type">
-						<option <if condition="S('catetype') eq $key">selected</if> value="{$key}">{$type}</option>
-					</volist>
-                 </select>
+
 
             <script type="text/javascript">
 
@@ -77,12 +70,11 @@ $(function(){
             <tr>
             
             <th>ID</th>
-            
-				<th class="text-left" width="400">分类</th>
-			    <th>状态</th>
-               <th>排序</th>
-               <th>会员权限</th>
-               <th>类型</th>
+				<th class="text-left" width="300">标题</th>
+			    <th>图片</th>
+               <th>开始时间</th>
+               <th>结束时间</th>
+               <th>状态</th>
                 <th  width="30"><input type="checkbox" class="checkboxCtrl j-icheck" group="ids"></th>
                 <th width="180">操作</th>
             </tr>
@@ -91,12 +83,11 @@ $(function(){
 
            <volist id="vo" name="list">
             <tr> <td>{$vo['id']}</td>
-					<td class="text-left">{$vo['name']}</td>
-					
+					<td class="text-left">{$vo['title']}</td>
+                    <td><img src="{$vo['path']}" style="height: 30px;width: 50px"/></td>
+                    <td>{$vo['start_at']}</td>
+                    <td>{$vo['end_at']}</td>
 		            <td>{$vo['status']|getStatus}</td>
-		             <td>{$vo['ordid']}</td>
-		             <td>会员{$vo['enable']|getenablename=3}发布文章</td>
-		             <td class="text-center">{$vo['type']|get_cate_type}</td>
                 <td class="text-center"><input type="checkbox" name="ids" class="j-icheck" value="{$vo['id']}"></td>
                 <td>
                 <div class="btn-group  btn-group-xs">

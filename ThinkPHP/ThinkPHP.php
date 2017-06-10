@@ -13,6 +13,7 @@
 // ThinkPHP公共入口文件
 //----------------------------------
 
+require 'CompatibleMysql.php';
 // 记录开始运行时间
 $GLOBALS['_beginTime'] = microtime(TRUE);
 // 记录内存初始使用
