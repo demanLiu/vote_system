@@ -1,0 +1,47 @@
+[
+    {
+        "id": "14",
+        "Title": "从化区第二幼儿园",
+        "author": "王艺霏",
+        "vote": "13558",
+        "SmallPhoto": "/UpFile/image/20170602/1496397471666734.jpg",
+        "Ifvote": false
+    },
+    {
+        "id": "18",
+        "Title": "从化区第二幼儿园",
+        "author": "谢勤思",
+        "vote": "10210",
+        "SmallPhoto": "/UpFile/image/20170602/1496397777400195.jpg",
+        "Ifvote": false
+    }
+]
+
+
+CREATE TABLE `zs_vote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` int(11) DEFAULT NULL,
+  `end_at` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  `start_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE `zs_votecate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) DEFAULT '',
+  `status` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE `zs_votemember` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
+  `vote_num` int(11) DEFAULT '0',
+  `status` tinyint(4) DEFAULT NULL,
+  `image` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ;

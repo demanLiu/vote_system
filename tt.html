@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>从化区第二十七届少儿书画现场大赛</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://cdn.bootcss.com/pure/0.6.2/pure-min.css" rel="stylesheet">
+  <style>
+    body {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .nav {
+      text-align: center;
+      background-color: #0068b7;
+      line-height: .72rem;
+      color: #fff;
+      font-size: .28rem;
+    }
+    
+    .down {
+      text-align: center;
+      font-size: 0;
+      background-color: #b1dbf4;
+      padding-bottom: .2rem;
+    }
+    
+    .down img {
+      width: .32rem;
+    }
+    
+    .content {
+      min-height: 49vh;
+      background-color: #b1dbf4;
+      padding: 0 .23rem .23rem .23rem;
+    }
+    
+    .inslide {
+      border-radius: 5px;
+      font-size: .24rem;
+      padding: .24rem;
+      background-color: #fff;
+      line-height: .4rem;
+      min-height: 49vh;
+      text-indent: 2em;
+    }
+    
+    .loading {
+      position: fixed;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 1.38rem;
+      width: 2rem;
+      height: 2rem;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.64);
+      line-height: 2rem;
+      text-align: center;
+      color: #fff;
+      border-radius: 5px;
+      font-size: .24rem;
+    }
+    
+    .nav2 {
+      background-color: #84ccc9;
+    }
+    
+    .nav2 [class*="router-link-active"] {
+      color: #39948f;
+    }
+    
+    .content2 {
+      min-height: 49vh;
+      background-color: #b1dbf4;
+      padding-right: .23rem;
+      padding-top: .23rem;
+    }
+    
+    .p-box {
+      margin: 0 0 .23rem .23rem;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: .1rem;
+    }
+    
+    .top {
+      background-image: url(images/top.png);
+      height: .64rem;
+      width: 2.56rem;
+      background-size: cover;
+      font-size: .22rem;
+      text-align: center;
+      line-height: 0.5rem;
+      margin: 0 auto;
+    }
+    
+    .img {
+      width: 2.36rem;
+      height: 1.53rem;
+      margin: 0 auto;
+      overflow: hidden;
+      margin-top: .1rem;
+    }
+    
+    .bottom {
+      font-size: .18rem;
+      padding: .1rem;
+    }
+    
+    .bottom p {
+      margin: 0;
+    }
+    
+    .tp {
+      width: 100%;
+      margin-top: 0.06rem;
+      text-align: center;
+    }
+    
+    .vote {
+      font-size: 0.20rem;
+      text-align: center;
+      background-color: #ee752e;
+      color: #fff;
+      line-height: 2em;
+    }
+    
+    .footer {
+      font-size: 0.18rem;
+      text-align: center;
+      background-color: #b1dbf4;
+      line-height: 3em;
+      color: #666;
+    }
+    
+    .c-title {
+      min-height: 0.3rem;
+      text-align: center;
+      font-size: 0.3rem;
+      padding: 0.1rem 0;
+    }
+    
+    .c-title img {
+      max-width: 100%;
+    }
+  </style>
+  <script>
+    var deviceWidth = document.documentElement.clientWidth;
+    if (deviceWidth > 640) deviceWidth = 640;
+    document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="header-nav">
+      <div class="header">
+        <img src="images/head.jpg" alt="" class="pure-img">
+      </div>
+      <div class="pure-g nav">
+        <div class="pure-u-1-4">
+          <router-link to="/">活动简介</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content2/1">入围作品</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content3/1">获奖作品</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content4">奖项设置</router-link>
+        </div>
+      </div>
+    </div>
+    <router-view></router-view>
+    <div class="footer">技术支持：永拓科技</div>
+  </div>
+  <script src="http://cdn.bootcss.com/vue/2.3.3/vue.js"></script>
+  <script src="http://cdn.bootcss.com/vue-router/2.5.3/vue-router.min.js"></script>
+  <script src="http://cdn.bootcss.com/axios/0.16.1/axios.min.js"></script>
+  <script type="text/x-template" id="content">
+    <div class="t1">
+      <div class="pure-g down">
+        <div class="pure-u-1-4"><img src="images/down.png" alt=""></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+      </div>
+      <div class="content">
+        <div class="inslide">
+          <p>以“墨韵溢彩 心绘流溪”为主题，创作内容健康、具有时代气息和艺术品味、体现学生年龄特点与生活情趣绘画、书法作品。描绘自己的学习和身边的 美好生活以及对“中国梦”的认识，反映当代学生 爱学习、爱劳动、爱祖国的精神风貌。
+          </p>
+          <p>投票时间：6月3日（早上08:00）—6月8日（晚上12点）</p>
+          <p style="color:red">投票规则：</p>
+          <p style="color:red">1、每组每天每人可投5票；</p>
+          <p style="color:red">2、同一作品每天只能投1票；</p>
+          <p style="color:red">3、每人每天共有20票（可投您喜欢的作品）。</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="content4">
+    <div class="t1">
+      <div class="pure-g down">
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"><img src="images/down.png" alt=""></div>
+      </div>
+      <div class="content">
+        <div class="inslide">
+          <p>绘画A组、绘画B组、绘画C组和书法组共四组 每组评选出5名最佳人气奖。奖品是价值200元的 美术用品套装和价值100元的图书一套。</p>
+          <p>获得一等奖作品的选手，将由文化馆组织、推荐作品参加广州市“羊城之夏”系列活动“十香园” 杯2017少儿书画大赛。</p>
+          <p>现场评选出各组别的一、二、三等奖若干名（ 参赛者每10人中有7人获奖，等级按分组人数而定 ），并给获奖者及辅导老师颁发获奖证书以资鼓励。</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="content2">
+    <div class="t2">
+      <div class="loading" v-if="loading">加载中...</div>
+      <div class="pure-g down">
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"><img src="images/down.png" alt=""></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+      </div>
+      <div class="pure-g nav nav2">
+        <div class="pure-u-1-4 nav-active">
+          <router-link to="/content2/1">绘画A组</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content2/2">绘画B组</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content2/3">绘画C组</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content2/4">书法组</router-link>
+        </div>
+      </div>
+      <!--<div class="vote">各组每天能投5票，同一作品每天只能投一票</div>-->
+      <div class="content2">
+        <div class="pure-g">
+          <div class="pure-u-1-2" v-for="item in lists">
+            <div class="p-box">
+              <div class="top">{{item.Title}}</div>
+              <div class="img">
+                <router-link :to="{ name: 'id', params: { id: item.id }}"><img :src="item.SmallPhoto" alt="" class="pure-img"></router-link>
+              </div>
+              <div class="bottom">
+                <div class="pure-g">
+                  <div class="pure-u-3-5">
+                    <p>作者：{{item.author}}</p>
+                    <p>投票数：{{item.vote}}</p>
+                  </div>
+                  <div class="pure-u-2-5">
+                    <button v-if="item.Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(item)">投票</button>
+                    <div v-else class="tp">已投票</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="content3">
+    <div class="t2">
+      <div class="loading" v-if="loading">加载中...</div>
+      <div class="pure-g down">
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"><img src="images/down.png" alt=""></div>
+        <div class="pure-u-1-4"></div>
+      </div>
+      <div class="pure-g nav nav2">
+        <div class="pure-u-1-4 nav-active">
+          <router-link to="/content3/1">绘画A组</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content3/2">绘画B组</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content3/3">绘画C组</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content3/4">书法组</router-link>
+        </div>
+      </div>
+      <div class="content2">
+        <div v-if="noPrice" style="font-size:0.3rem;text-align:center">获奖作品将在6月8日后公布</div>
+        <div class="pure-g">
+          <div class="pure-u-1-2" v-for="item in lists">
+            <div class="p-box">
+              <div class="top">{{item.Title}}</div>
+              <div class="img">
+                <a :href="item.SmallPhoto"><img :src="item.SmallPhoto" alt="" class="pure-img"></a>
+              </div>
+              <div class="bottom">
+                <div class="pure-g">
+                  <div class="pure-u-3-5">
+                    <p>作者：{{item.author}}</p>
+                    <p>奖项：{{item.price}}</p>
+                  </div>
+                  <div class="pure-u-2-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="productInfo">
+    <div class="t2">
+      <div class="loading" v-if="loading">加载中...</div>
+      <div class="content" style="padding-top: .5rem;">
+        <div class="c-title" style="min-height: 25vh;"><img :src="lists.SmallPhoto" alt=""></div>
+        <!--<div class="c-title">{{lists.Title}}</div>-->
+        <!--<div class="c-title">{{lists.author}}</div>-->
+        <div class="c-title" style="min-height: 0;">{{lists.price}}</div>
+        <div class="c-title" v-html="lists.ProductInfo"></div>
+        <div class="c-title">
+          <button v-if="Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(lists.id)">投票</button>
+          <div v-else class="tp">投票成功</div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script>
+    window.alert = function(name) {
+      var iframe = document.createElement("IFRAME");
+      iframe.style.display = "none";
+      iframe.setAttribute("src", 'data:text/plain,');
+      document.documentElement.appendChild(iframe);
+      window.frames[0].window.alert(name);
+      iframe.parentNode.removeChild(iframe);
+    };
+
+    var content = {
+      template: '#content'
+    }
+    var content4 = {
+      template: '#content4'
+    }
+
+    var content2 = {
+      template: '#content2',
+      data: function() {
+        return {
+          loading: false,
+          ClassID: null,
+          lists: [],
+          wx: 0
+        }
+      },
+      mounted: function() {
+        var self = this
+        self.getList()
+      },
+      watch: {
+        "$route": "getList"
+      },
+      methods: {
+        getList: function() {
+          var self = this
+          self.loading = true
+          axios.get('http://whyy.chwgx.gov.cn/tp/ajax.php?ClassID=' + this.$route.params.ClassID)
+            .then(function(response) {
+              self.lists = []
+              var data = response.data;
+              for (var i in data) {
+                var selData = data[i];
+                self.lists.push(selData);
+              }
+              self.loading = false
+              wx.config({
+                debug: false,
+                appId: 'wx1b2315ac2f98ccfd',
+                timestamp: 1496841083,
+                nonceStr: 'GjHfxP7e9GgicmOI',
+                signature: '54384632d5e24c0b49ab9477ce93fc8376ce0015',
+                jsApiList: [
+                  'onMenuShareTimeline',
+                  'onMenuShareAppMessage'
+                ]
+              });
+              wx.ready(function() {
+                wx.onMenuShareAppMessage({
+                  title: '从化区第二十七届少儿书画大赛',
+                  desc: '从化区第二十七届少儿书画大赛投票火热进行中，请为喜爱的作品投一票吧~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/tp/images/share.jpg'
+                });
+
+                wx.onMenuShareTimeline({
+                  title: '从化区第二十七届少儿书画大赛投票火热进行中，请为喜爱的作品投一票吧~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/tp/images/share.jpg'
+                });
+              });
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        },
+        vote: function(item) {
+          var self = this
+          self.loading = true
+          axios.get('http://whyy.chwgx.gov.cn/tp/vote.php?ProductID=' + item.id)
+            .then(function(response) {
+              self.loading = false
+              var data = response.data
+              if (data['vote'] == '投票成功') {
+                item.Ifvote = false
+                item.vote = Number(item.vote) + 1
+              } else {
+                alert(data['vote'])
+              }
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        }
+      }
+    }
+
+    var content3 = {
+      template: '#content3',
+      data: function() {
+        return {
+          loading: false,
+          ClassID: null,
+          noPrice: false,
+          lists: []
+        }
+      },
+      mounted: function() {
+        var self = this
+        self.getList()
+      },
+      watch: {
+        "$route": "getList"
+      },
+      methods: {
+        getList: function() {
+          var self = this
+          self.loading = true
+          axios.get('http://whyy.chwgx.gov.cn/tp/ajax2.php?ClassID=' + this.$route.params.ClassID)
+            .then(function(response) {
+              self.lists = []
+              var data = response.data;
+              if (data == null) {
+                self.noPrice = true
+              }
+              for (var i in data) {
+                var selData = data[i];
+                self.lists.push(selData);
+              }
+              self.loading = false
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        }
+      }
+    }
+
+    var productInfo = {
+      template: '#productInfo',
+      data: function() {
+        return {
+          Ifvote: true,
+          loading: false,
+          lists: []
+        }
+      },
+      mounted: function() {
+        var self = this
+        self.getList()
+      },
+      watch: {
+        "$route": "getList"
+      },
+      methods: {
+        getList: function() {
+          var self = this
+          self.loading = true
+          axios.get('http://whyy.chwgx.gov.cn/tp/ajax3.php?id=' + this.$route.params.id)
+            .then(function(response) {
+              var data = response.data;
+              //document.title = '从化区第二十七届少儿书画现场大赛《' + data["Title"] + "》作者：" + data['author'];
+              self.lists = response.data;
+              self.loading = false
+              wx.config({
+                debug: false,
+                appId: 'wx1b2315ac2f98ccfd',
+                timestamp: 1496841083,
+                nonceStr: 'GjHfxP7e9GgicmOI',
+                signature: '54384632d5e24c0b49ab9477ce93fc8376ce0015',
+                jsApiList: [
+                  'onMenuShareTimeline',
+                  'onMenuShareAppMessage'
+                ]
+              });
+              wx.ready(function() {
+                wx.onMenuShareAppMessage({
+                  title: '从化区第二十七届少儿书画现场大赛',
+                  desc: '我是' + data['author'] + '，我正在参加从化区第二十七届少儿书画大赛，请为我投一票吧~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/' + data['SmallPhoto']
+                });
+
+                wx.onMenuShareTimeline({
+                  title: '我是' + data['author'] + '，我正在参加从化区第二十七届少儿书画大赛，请为我投一票吧~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/' + data['SmallPhoto']
+                });
+              });
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        },
+        vote: function(id) {
+          var self = this
+          self.loading = true
+          axios.get('http://whyy.chwgx.gov.cn/tp/vote.php?ProductID=' + id)
+            .then(function(response) {
+              self.loading = false
+              var data = response.data
+              if (data['vote'] == '投票成功') {
+                self.Ifvote = false
+                //item.vote = Number(item.vote) + 1
+              } else {
+                alert(data['vote'])
+              }
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        }
+      }
+    }
+
+    var router = new VueRouter({
+      routes: [{
+          path: '/',
+          component: content
+        },
+        {
+          path: '/content4',
+          component: content4
+        },
+        {
+          path: '/productInfo/:id',
+          name: 'id',
+          component: productInfo
+        },
+        {
+          path: '/content3/:ClassID',
+          name: 'ClassID',
+          component: content3
+        },
+        {
+          path: '/content2/:ClassID',
+          name: 'ClassID',
+          component: content2
+        }
+      ]
+    })
+
+    new Vue({
+      el: '#app',
+      router: router
+    })
+  </script>
+
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+    /*
+     * 注意：
+     * 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。
+     * 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。
+     * 3. 常见问题及完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+     *
+     * 开发中遇到问题详见文档“附录5-常见错误及解决办法”解决，如仍未能解决可通过以下渠道反馈：
+     * 邮箱地址：weixin-open@qq.com
+     * 邮件主题：【微信JS-SDK反馈】具体问题
+     * 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。
+     */
+  </script>
+</body>
+
+</html>

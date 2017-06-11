@@ -3,11 +3,13 @@ namespace Admin\Model;
 use Think\Model;
 
 
-class VoteCateModel extends CommonModel {
+class VotememberModel extends CommonModel {
     public $_auto		=	array(
        
         );
     public function _after_find(&$result,$options) {
+        $r = M('votecate')->where(['id'=>$result['group_id']])->find();
+        $result['group_name'] = $r['name'];
     }
     
     public function _after_select(&$result,$options){

@@ -1,7 +1,7 @@
   <extend name="Public:common" />
 
 <block name="main">
-    <form action="{:U('Votecate/insert')}" id="j_custom_form" class="col-md-12 form-label-right form-validate" method="post" url="{:U('Votecate/index')}" callback="TabAjaxDone" noEnter>
+    <form action="{:U('Votemember/insert')}" id="j_custom_form" class="col-md-12 form-label-right form-validate" method="post" url="{:U('Votemember/index')}" callback="TabAjaxDone" noEnter>
       
        <div class="pageContainer">
             <div class="form-row">
@@ -13,6 +13,23 @@
             </div>
             <div class="form-row">
             </div>
+           <div class="form-row">
+           </div>
+          <div class="form-row">
+              <div class="form-label col-md-2"><label>所属分组：</label>
+              </div>
+              <div class="col-md-7">
+                  <select name="group_id"  data-container="body"  id="j_parent_id" class="selectpicker show-tick validate[required]" data-style="btn medium bg-green" data-width="auto">
+                      <php>if(!empty($pInfo)) {</php>
+                      <foreach name="pInfo" item="item" >
+                          <option value="{$item.id}">{$item.name}</option>
+                      </foreach>
+                      <php>}</php>
+                      <option value="0">无</option>
+                  </select>
+              </div>
+          </div>
+
 
            <div class="form-row">
            </div>
@@ -28,7 +45,19 @@
 		</div>
         <div class="form-row">
         </div>
-		 <div class="form-row">
+             <div class="form-label col-md-2">
+                 <label>主题图片：</label></div>
+             <div class="col-md-7">
+                 <input type="file" id="upload_picture_advspic">
+                 <input type="hidden" name="image" id="cover_id_advspic" value="{$info.img}"/>
+                 <div class="upload-img-box">
+                     <notempty name="info['img']"><div class="upload-pre-item">
+                         <img src="__ROOT__{$info.path}"/></div></notempty>
+                 </div>
+
+
+             </div>
+         </div>
 
 <script type="text/javascript">
 $(function(){
@@ -48,9 +77,6 @@ $(function(){
         }
     });
 	},3);
-    $("#j_level").on('click',function(){
-        alert(11);
-    });
 });
 function uploadPicture{$field.name}(file,data){
 	var data = $.parseJSON(data);
