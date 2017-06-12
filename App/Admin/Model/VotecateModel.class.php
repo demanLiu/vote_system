@@ -8,6 +8,8 @@ class VoteCateModel extends CommonModel {
        
         );
     public function _after_find(&$result,$options) {
+        $r = M('vote')->where(['id'=>$result['vote_id']])->find();
+        $result['vote_name'] = $r['title'];
     }
     
     public function _after_select(&$result,$options){

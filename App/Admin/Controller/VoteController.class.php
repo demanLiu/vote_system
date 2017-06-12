@@ -2,6 +2,7 @@
 namespace Admin\Controller;
 
 class VoteController extends CommonController {
+
 	public $cateListAll = array();
 	
 	

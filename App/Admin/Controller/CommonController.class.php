@@ -393,7 +393,6 @@ class CommonController extends Controller {
 		$map = $this->_search();
 
 
-
 		$this->assign("map", $map);
 		
 		if (method_exists($this, '_filter')) {

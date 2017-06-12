@@ -40,7 +40,7 @@ class ConfigController extends CommonController {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function save($config){
-    	
+
     	$old['artid']=M('Config')->where(array('name'=>'WXARTID'))->getField('value');
     	
     

@@ -19,6 +19,11 @@ class VoteModel extends CommonModel {
     	}
     }
     public function _before_insert(&$data,$options){
+        $data['created_at'] = time();
+        $data['start_at'] = strtotime($data['start_at']);
+        $data['end_at'] = strtotime($data['end_at']);
+    }
+    public function _before_update(&$data,$options){
         $data['start_at'] = strtotime($data['start_at']);
         $data['end_at'] = strtotime($data['end_at']);
     }
