@@ -198,6 +198,7 @@
       </div>
       <div class="content">
         <div class="inslide">
+          ddd
           <p>�ԡ�ī����� �Ļ���Ϫ��Ϊ���⣬�������ݽ���������ʱ����Ϣ������Ʒζ������ѧ�������ص���������Ȥ�滭���鷨��Ʒ������Լ���ѧϰ����ߵ� ���������Լ��ԡ��й��Ρ�����ʶ����ӳ����ѧ�� ��ѧϰ�����Ͷ���������ľ����ò��
           </p>
           <p>ͶƱʱ�䣺6��3�գ�����08:00����6��8�գ�����12�㣩</p>
@@ -215,10 +216,11 @@
         <div class="pure-u-1-4"></div>
         <div class="pure-u-1-4"></div>
         <div class="pure-u-1-4"></div>
-        <div class="pure-u-1-4"><img src="__STATIC__/images/arrow-down.png" alt=""></div>
+        <div class="pure-u-1-4"><img src="__STATIC__/images/arrow-up.png" alt=""></div>
       </div>
       <div class="content">
         <div class="inslide">
+          aaa
           <p>�滭A�顢�滭B�顢�滭C����鷨�鹲���� ÿ����ѡ��5���������������Ʒ�Ǽ�ֵ200Ԫ�� ������Ʒ��װ�ͼ�ֵ100Ԫ��ͼ��һ�ס�</p>
           <p>���һ�Ƚ���Ʒ��ѡ�֣������Ļ�����֯���Ƽ���Ʒ�μӹ����С����֮�ġ�ϵ�л��ʮ��԰�� ��2017�ٶ��黭������</p>
           <p>�ֳ���ѡ��������һ���������Ƚ��������� ������ÿ10������7�˻񽱣��ȼ��������������� �����������߼�������ʦ�䷢��֤�����ʹ�����</p>
@@ -229,7 +231,7 @@
   </script>
   <script type="text/x-template" id="content2">
     <div class="t2">
-      <div class="loading" v-if="loading">������...</div>
+      <div class="loading" v-if="loading">加载中...</div>
       <div class="pure-g down">
         <div class="pure-u-1-4"></div>
         <div class="pure-u-1-4"><img src="images/down.png" alt=""></div>
@@ -237,18 +239,17 @@
         <div class="pure-u-1-4"></div>
       </div>
       <div class="pure-g nav nav2">
-        <div class="pure-u-1-4 nav-active">
-          <router-link to="/content2/1">�滭A��</router-link>
-        </div>
-        <div class="pure-u-1-4">
-          <router-link to="/content2/2">�滭B��</router-link>
-        </div>
-        <div class="pure-u-1-4">
-          <router-link to="/content2/3">�滭C��</router-link>
-        </div>
-        <div class="pure-u-1-4">
-          <router-link to="/content2/4">�鷨��</router-link>
-        </div>
+        <foreach name="votecate" item="cate" key="key">
+          <?php if ($key == 0){    ?>
+          <div class="pure-u-1-4 nav-active" >
+            <router-link to="/content2/{$key+1}">{$cate.name}</router-link>
+          </div>
+          <?php }else{ ?>
+          <div class="pure-u-1-4 " >
+            <router-link to="/content2/{$key+1}">{$cate.name}</router-link>
+          </div>
+          <?php }?>
+        </foreach>
       </div>
       <!--<div class="vote">����ÿ����Ͷ5Ʊ��ͬһ��Ʒÿ��ֻ��ͶһƱ</div>-->
       <div class="content2">
@@ -279,7 +280,7 @@
   </script>
   <script type="text/x-template" id="content3">
     <div class="t2">
-      <div class="loading" v-if="loading">������...</div>
+      <div class="loading" v-if="loading">加载中...</div>
       <div class="pure-g down">
         <div class="pure-u-1-4"></div>
         <div class="pure-u-1-4"></div>
@@ -287,18 +288,17 @@
         <div class="pure-u-1-4"></div>
       </div>
       <div class="pure-g nav nav2">
-        <div class="pure-u-1-4 nav-active">
-          <router-link to="/content3/1">�滭A��</router-link>
-        </div>
-        <div class="pure-u-1-4">
-          <router-link to="/content3/2">�滭B��</router-link>
-        </div>
-        <div class="pure-u-1-4">
-          <router-link to="/content3/3">�滭C��</router-link>
-        </div>
-        <div class="pure-u-1-4">
-          <router-link to="/content3/4">�鷨��</router-link>
-        </div>
+        <foreach name="votecate" item="cate" key="key">
+          <?php if ($key == 0){    ?>
+          <div class="pure-u-1-4 nav-active" >
+            <router-link to="/content3/{$key+1}">{$cate.name}</router-link>
+          </div>
+          <?php }else{ ?>
+          <div class="pure-u-1-4 " >
+            <router-link to="/content3/{$key+1}">{$cate.name}</router-link>
+          </div>
+          <?php }?>
+        </foreach>
       </div>
       <div class="content2">
         <div v-if="noPrice" style="font-size:0.3rem;text-align:center">����Ʒ����6��8�պ󹫲�</div>
