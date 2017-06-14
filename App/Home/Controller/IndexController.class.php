@@ -35,7 +35,17 @@ class IndexController extends Controller{
     }
     public function vote()
     {
-        $productId = I('ProductID')?I('cateID'):1;
+        $productId = I('ProductID') ? I('ProductID') : 1;
 
+        echo json_encode(['vote' => '投票成功']);
+
+    }
+    public function getDetail()
+    {
+        $productId = I('id') ? I('id') : 1;
+        $result = M('Votemember')->where(['id'=>$productId])->find();
+        $result['SmallPhoto'] = getThumbImageById($result['image']);
+        $result['Ifvote'] = false;
+        echo json_encode($result);
     }
 }
