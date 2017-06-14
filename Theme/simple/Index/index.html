@@ -172,10 +172,10 @@
           <router-link to="/">投票规则</router-link>
         </div>
         <div class="pure-u-1-4">
-          <router-link to="/content2/1">参选作品</router-link>
+          <router-link to="/content2/{$vote.id}">参选作品</router-link>
         </div>
         <div class="pure-u-1-4">
-          <router-link to="/content3/1">获奖作品</router-link>
+          <router-link to="/content3/{$vote.id}">获奖作品</router-link>
         </div>
         <div class="pure-u-1-4">
           <router-link to="/content4">奖品设置</router-link>
@@ -239,14 +239,14 @@
         <div class="pure-u-1-4"></div>
       </div>
       <div class="pure-g nav nav2">
-        <foreach name="votecate" item="cate" key="key">
+        <foreach name="votecate" item="cate" >
           <?php if ($key == 0){    ?>
           <div class="pure-u-1-4 nav-active" >
-            <router-link to="/content2/{$key+1}">{$cate.name}</router-link>
+            <router-link to="/content2/{$cate.id}">{$cate.name}</router-link>
           </div>
           <?php }else{ ?>
           <div class="pure-u-1-4 " >
-            <router-link to="/content2/{$key+1}">{$cate.name}</router-link>
+            <router-link to="/content2/{$cate.id}">{$cate.name}</router-link>
           </div>
           <?php }?>
         </foreach>
@@ -256,19 +256,19 @@
         <div class="pure-g">
           <div class="pure-u-1-2" v-for="item in lists">
             <div class="p-box">
-              <div class="top">{{item.Title}}</div>
+              <div class="top">{{item.title}}</div>
               <div class="img">
                 <router-link :to="{ name: 'id', params: { id: item.id }}"><img :src="item.SmallPhoto" alt="" class="pure-img"></router-link>
               </div>
               <div class="bottom">
                 <div class="pure-g">
                   <div class="pure-u-3-5">
-                    <p>���ߣ�{{item.author}}</p>
-                    <p>ͶƱ����{{item.vote}}</p>
+                    <p>作者：{{item.name}}</p>
+                    <p>票数：{{item.vote_num}}</p>
                   </div>
                   <div class="pure-u-2-5">
-                    <button v-if="item.Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(item)">ͶƱ</button>
-                    <div v-else class="tp">��ͶƱ</div>
+                    <button v-if="item.Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(item)">投票</button>
+                    <div v-else class="tp">已投</div>
                   </div>
                 </div>
               </div>
@@ -288,14 +288,14 @@
         <div class="pure-u-1-4"></div>
       </div>
       <div class="pure-g nav nav2">
-        <foreach name="votecate" item="cate" key="key">
+        <foreach name="votecate" item="cate" >
           <?php if ($key == 0){    ?>
           <div class="pure-u-1-4 nav-active" >
-            <router-link to="/content3/{$key+1}">{$cate.name}</router-link>
+            <router-link to="/content3/{$cate.id}">{$cate.name}</router-link>
           </div>
           <?php }else{ ?>
           <div class="pure-u-1-4 " >
-            <router-link to="/content3/{$key+1}">{$cate.name}</router-link>
+            <router-link to="/content3/{$cate.id}">{$cate.name}</router-link>
           </div>
           <?php }?>
         </foreach>
@@ -312,8 +312,8 @@
               <div class="bottom">
                 <div class="pure-g">
                   <div class="pure-u-3-5">
-                    <p>���ߣ�{{item.author}}</p>
-                    <p>���{{item.price}}</p>
+                    <p>作者：{{item.author}}</p>
+                    <p>票数:{{item.price}}</p>
                   </div>
                   <div class="pure-u-2-5"></div>
                 </div>
@@ -378,10 +378,11 @@
         getList: function() {
           var self = this
           self.loading = true
-          axios.get('http://whyy.chwgx.gov.cn/tp/ajax.php?ClassID=' + this.$route.params.ClassID)
+          axios.get('{$ajaxUrl}/getList?cateID=' + this.$route.params.ClassID)
             .then(function(response) {
               self.lists = []
               var data = response.data;
+
               for (var i in data) {
                 var selData = data[i];
                 self.lists.push(selData);
@@ -420,7 +421,7 @@
         vote: function(item) {
           var self = this
           self.loading = true
-          axios.get('http://whyy.chwgx.gov.cn/tp/vote.php?ProductID=' + item.id)
+          axios.get('{$ajaxUrl}/vote?ProductID=' + item.id)
             .then(function(response) {
               self.loading = false
               var data = response.data

@@ -15,7 +15,7 @@ return array(
     'DATA_CACHE_PREFIX' => 'zs111_', // 缓存前缀
     'DATA_CACHE_TYPE'   => 'File', // 数据缓存类型
     'VIEW_PATH'=>'./Theme/',
-	
+
     /* SESSION 和 COOKIE 配置 */
     'SESSION_PREFIX' => 'zs_home', //session前缀
     'COOKIE_PREFIX'  => 'zs_home_', // Cookie前缀 避免冲突

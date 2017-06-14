@@ -9,6 +9,7 @@ class VotememberModel extends CommonModel {
         );
     public function _after_find(&$result,$options) {
         $r = M('votecate')->where(['id'=>$result['group_id']])->find();
+        $result['SmallPhoto'] = getThumbImageById($result['image']);
         $result['group_name'] = $r['name'];
     }
     

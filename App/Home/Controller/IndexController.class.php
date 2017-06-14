@@ -14,6 +14,7 @@ class IndexController extends Controller{
         $votecate = M('votecate')->where(['vote_id'=>$vote_id])->select();
         $this->assign('vote',$vote);
         $this->assign('votecate',$votecate);
+        $this->assign('ajaxUrl','/Index');
         $this->display();
     }
 
@@ -21,6 +22,20 @@ class IndexController extends Controller{
     {
 
     }
+    public function getList()
+    {
+        $cate_id = I('cateID')?I('cateID'):1;
+        $member = M('Votemember')->where(['group_id'=>$cate_id])->select();
+        foreach($member as &$item){
+            $item['SmallPhoto'] = getThumbImageById($item['image']);
+            //TODO
+            $item['Ifvote'] = true;
+        }
+        echo json_encode($member);
+    }
+    public function vote()
+    {
+        $productId = I('ProductID')?I('cateID'):1;
 
-
+    }
 }
