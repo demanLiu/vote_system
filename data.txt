@@ -27,8 +27,7 @@ CREATE TABLE `zs_vote` (
   `status` tinyint(4) DEFAULT '1',
   `start_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ;
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 CREATE TABLE `zs_votecate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -36,8 +35,7 @@ CREATE TABLE `zs_votecate` (
   `vote_id` int(11) DEFAULT NULL,
   `status` tinyint(4) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `zs_votemember` (
@@ -49,3 +47,12 @@ CREATE TABLE `zs_votemember` (
   `image` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE `zs_votelog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `object_id` varchar(255) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `is_vote` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_object_id` (`object_id`) USING HASH
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
