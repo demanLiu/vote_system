@@ -313,7 +313,7 @@
                 <div class="pure-g">
                   <div class="pure-u-3-5">
                     <p>作者：{{item.author}}</p>
-                    <p>票数:{{item.price}}</p>
+                    <p>票数: {{item.price}}</p>
                   </div>
                   <div class="pure-u-2-5"></div>
                 </div>
@@ -329,8 +329,8 @@
       <div class="loading" v-if="loading">加载中...</div>
       <div class="content" style="padding-top: .5rem;">
         <div class="c-title" style="min-height: 25vh;"><img :src="lists.SmallPhoto" alt=""></div>
-        <!--<div class="c-title">{{lists.Title}}</div>-->
-        <!--<div class="c-title">{{lists.author}}</div>-->
+        <div class="c-title">{{lists.title}}</div>
+        <div class="c-title">{{lists.name}}</div>
         <div class="c-title" style="min-height: 0;">{{lists.price}}</div>
         <div class="c-title" v-html="lists.ProductInfo"></div>
         <div class="c-title">
@@ -425,7 +425,7 @@
             .then(function(response) {
               self.loading = false
               var data = response.data
-              if (data['vote'] == '已投票') {
+              if (data['vote'] == '投票成功') {
                 item.Ifvote = false
                 item.vote = Number(item.vote) + 1
               } else {
@@ -538,13 +538,12 @@
         vote: function(id) {
           var self = this
           self.loading = true
-          axios.get('http://whyy.chwgx.gov.cn/tp/vote.php?ProductID=' + id)
+          axios.get('{$ajaxUrl}/vote?ProductID=' + id)
             .then(function(response) {
               self.loading = false
               var data = response.data
-              if (data['vote'] == 'ͶƱ�ɹ�') {
+              if (data['vote'] == '投票成功') {
                 self.Ifvote = false
-                //item.vote = Number(item.vote) + 1
               } else {
                 alert(data['vote'])
               }
@@ -591,17 +590,6 @@
 
   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
   <script>
-    /*
-     * ע�⣺
-     * 1. ���е�JS�ӿ�ֻ���ڹ��ںŰ󶨵������µ��ã����ںſ�������Ҫ�ȵ�¼΢�Ź���ƽ̨���롰���ں����á��ġ��������á�����д��JS�ӿڰ�ȫ��������
-     * 2. ��������� Android ���ܷ����Զ������ݣ��뵽�����������µİ����ǰ�װ��Android �Զ������ӿ��������� 6.0.2.58 �汾�����ϡ�
-     * 3. �������⼰���� JS-SDK �ĵ���ַ��http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
-     *
-     * ������������������ĵ�����¼5-�������󼰽���취�����������δ�ܽ����ͨ����������������
-     * �����ַ��weixin-open@qq.com
-     * �ʼ����⣺��΢��JS-SDK��������������
-     * �ʼ�����˵�����ü��������������������ڣ��������������������ĳ������ɸ��Ͻ���ͼƬ��΢���Ŷӻᾡ�촦����ķ�����
-     */
   </script>
 </body>
 

@@ -70,7 +70,9 @@ $(function(){
             <tr>
             
             <th>ID</th>
-				<th class="text-left" width="300">名称</th>
+				<th class="text-left" width="300">标题</th>
+                <th class="text-left" width="300">作者</th>
+                <th class="text-left" width="300">图片</th>
                 <th class="text-left" width="300">所属分组</th>
                <th>状态</th>
                 <th  width="30"><input type="checkbox" class="checkboxCtrl j-icheck" group="ids"></th>
@@ -80,8 +82,11 @@ $(function(){
         <tbody>
 
            <volist id="vo" name="list">
-            <tr> <td>{$vo['id']}</td>
+            <tr>
+                    <td>{$vo['id']}</td>
+                    <td class="text-left">{$vo['title']}</td>
 					<td class="text-left">{$vo['name']}</td>
+                    <td><img src="{$vo['SmallPhoto']}" style="height: 30px;width: 50px"/></td>
                     <td>{$vo['group_name']}</td>
 		            <td>{$vo['status']|getStatus}</td>
                 <td class="text-center"><input type="checkbox" name="ids" class="j-icheck" value="{$vo['id']}"></td>

@@ -2,10 +2,8 @@
 namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller{
-	
 
-	
-	//系统首页
+    //系统首页
     public function index(){
         $this->checkValidate();
         $vote_id = I('id')?I('id'):1;

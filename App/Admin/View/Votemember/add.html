@@ -5,7 +5,7 @@
       
        <div class="pageContainer">
             <div class="form-row">
-                <div class="form-label col-md-2"><label>名称：</label>
+                <div class="form-label col-md-2"><label>作者：</label>
                 </div>
                 <div class="form-input col-md-7">
                 <input type="text" size="30" class="validate[required,minSize[1]] required"  name="name" id="j_name" value=""  >
@@ -13,6 +13,13 @@
             </div>
             <div class="form-row">
             </div>
+           <div class="form-row">
+               <div class="form-label col-md-2"><label>标题：</label>
+               </div>
+               <div class="form-input col-md-7">
+                   <input type="text" size="30" class="validate[required,minSize[1]] required"  name="title" id="j_title" value=""  >
+               </div>
+           </div>
            <div class="form-row">
            </div>
           <div class="form-row">
@@ -25,7 +32,6 @@
                           <option value="{$item.id}">{$item.name}</option>
                       </foreach>
                       <php>}</php>
-                      <option value="0">无</option>
                   </select>
               </div>
           </div>

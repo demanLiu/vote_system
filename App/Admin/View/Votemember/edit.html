@@ -1,16 +1,36 @@
  <extend name="Public:common" />
 
 <block name="main">
-    <form action="{:U('Votecate/update')}" id="j_custom_form" url="{:U('Votecate/index')}" callback="TabAjaxDone" class="col-md-12 form-label-right center-margin form-validate" method="post" noEnter>
+    <form action="{:U('Votemember/update')}" id="j_custom_form" url="{:U('Votemember/index')}" callback="TabAjaxDone" class="col-md-12 form-label-right center-margin form-validate" method="post" noEnter>
         <input type="hidden" name="id" value="{$info.id}" />
        <div class="pageContainer">
+           <div class="form-row">
+               <div class="form-label col-md-2"><label>作者：</label>
+               </div>
+               <div class="form-input col-md-7">
+                   <input type="text" size="30" class="validate[required,minSize[3]] required"  name="name" id="j_name" value="{$info.name}"  >
+               </div>
+           </div>
             <div class="form-row">
-                <div class="form-label col-md-2"><label>名称：</label>
+                <div class="form-label col-md-2"><label>标题：</label>
                 </div>
                 <div class="form-input col-md-7">
-                <input type="text" size="30" class="validate[required,minSize[3]] required"  name="title" id="j_title" value="{$info.name}"  >
+                <input type="text" size="30" class="validate[required,minSize[3]] required"  name="title" id="j_title" value="{$info.title}"  >
                </div>
             </div>
+           <div class="form-row">
+               <div class="form-label col-md-2"><label>所属分组：</label>
+               </div>
+               <div class="col-md-7">
+                   <select name="group_id"  data-container="body"  id="j_parent_id" class="selectpicker show-tick validate[required]" data-style="btn medium bg-green" data-width="auto">
+                       <php>if(!empty($pInfo)) {</php>
+                       <foreach name="pInfo" item="item" >
+                           <option value="{$item.id}">{$item.name}</option>
+                       </foreach>
+                       <php>}</php>
+                   </select>
+               </div>
+           </div>
            <div class="form-row">
                <div class="form-label col-md-2"><label>状态：</label>
                </div>
@@ -23,6 +43,20 @@
                </div>
 
 		</div>
+           <div class="form-row">
+               <div class="form-label col-md-2">
+                   <label>主题图片：</label></div>
+               <div class="col-md-7">
+                   <input type="file" id="upload_picture_advspic">
+                   <input type="hidden" name="img" id="cover_id_advspic" value="{$info.image}"/>
+                   <div class="upload-img-box">
+                       <notempty name="info['image']"><div class="upload-pre-item">
+                           <img src="__ROOT__{$info.SmallPhoto}" width="100" height="100"/></div></notempty>
+                   </div>
+
+
+               </div>
+           </div>
 
 <script type="text/javascript">
 $(function(){

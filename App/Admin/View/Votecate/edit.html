@@ -12,6 +12,20 @@
                </div>
             </div>
            <div class="form-row">
+               <div class="form-label col-md-2"><label>投票活动：</label>
+               </div>
+               <div class="col-md-7">
+                   <select name="vote_id"  data-container="body"  id="j_vote" class="selectpicker show-tick validate[required]" data-style="btn medium bg-green" data-width="auto">
+                       <foreach name="vote" item="vote">
+                               <option <?php if($info['vote_id'] == $vote['id']){ ?>selected <?php }?> value="{$vote.id}">{$vote.title}</option>
+                       </foreach>
+                   </select>
+               </div>
+           </div>
+
+           <div class="form-row">
+           </div>
+           <div class="form-row">
                <div class="form-label col-md-2"><label>状态：</label>
                </div>
                <div class="col-md-7">
