@@ -53,6 +53,9 @@ CREATE TABLE `zs_votelog` (
   `object_id` varchar(255) NOT NULL,
   `updated_at` int(11) NOT NULL,
   `is_vote` tinyint(4) NOT NULL,
+	member_id int,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_object_id` (`object_id`) USING HASH
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+

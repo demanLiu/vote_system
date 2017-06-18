@@ -334,7 +334,7 @@
         <div class="c-title" style="min-height: 0;">{{lists.price}}</div>
         <div class="c-title" v-html="lists.ProductInfo"></div>
         <div class="c-title">
-          <button v-if="Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(lists.id)">投票</button>
+          <button v-if="lists.Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(lists.id)">投票</button>
           <div v-else class="tp">已投</div>
         </div>
       </div>
@@ -390,10 +390,10 @@
               self.loading = false
               wx.config({
                 debug: false,
-                appId: 'wx1b2315ac2f98ccfd',
-                timestamp: 1496841083,
-                nonceStr: 'GjHfxP7e9GgicmOI',
-                signature: '54384632d5e24c0b49ab9477ce93fc8376ce0015',
+                appId: {$signPackage['appId']},
+                timestamp:{$signPackage['timestamp']},
+                nonceStr: {$signPackage['nonceStr']},
+                signature:{$signPackage['signature']},
                 jsApiList: [
                   'onMenuShareTimeline',
                   'onMenuShareAppMessage'
@@ -427,7 +427,7 @@
               var data = response.data
               if (data['vote'] == '投票成功') {
                 item.Ifvote = false
-                item.vote = Number(item.vote) + 1
+                item.vote_num = Number(item.vote_num) + 1
               } else {
                 alert(data['vote'])
               }
@@ -507,10 +507,10 @@
               self.loading = false
               wx.config({
                 debug: false,
-                appId: 'wx1b2315ac2f98ccfd',
-                timestamp: 1496841083,
-                nonceStr: 'GjHfxP7e9GgicmOI',
-                signature: '54384632d5e24c0b49ab9477ce93fc8376ce0015',
+                appId: {$signPackage['appId']},
+                timestamp:{$signPackage['timestamp']},
+                nonceStr: {$signPackage['nonceStr']},
+                signature:{$signPackage['signature']},
                 jsApiList: [
                   'onMenuShareTimeline',
                   'onMenuShareAppMessage'
