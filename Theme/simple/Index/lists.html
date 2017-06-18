@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{$vote.title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://cdn.bootcss.com/pure/0.6.2/pure-min.css" rel="stylesheet">
+  <style>
+    body {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    .nav {
+      text-align: center;
+      background-color: #0068b7;
+      line-height: .72rem;
+      color: #fff;
+      font-size: .28rem;
+    }
+    
+    .down {
+      text-align: center;
+      font-size: 0;
+      background-color: #b1dbf4;
+      padding-bottom: .2rem;
+    }
+    
+    .down img {
+      width: .32rem;
+    }
+    
+    .content {
+      min-height: 49vh;
+      background-color: #b1dbf4;
+      padding: 0 .23rem .23rem .23rem;
+    }
+    
+    .inslide {
+      border-radius: 5px;
+      font-size: .24rem;
+      padding: .24rem;
+      background-color: #fff;
+      line-height: .4rem;
+      min-height: 49vh;
+      text-indent: 2em;
+    }
+    
+    .loading {
+      position: fixed;
+      margin: auto;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 1.38rem;
+      width: 2rem;
+      height: 2rem;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.64);
+      line-height: 2rem;
+      text-align: center;
+      color: #fff;
+      border-radius: 5px;
+      font-size: .24rem;
+    }
+    
+    .nav2 {
+      background-color: #84ccc9;
+    }
+    
+    .nav2 [class*="router-link-active"] {
+      color: #39948f;
+    }
+    
+    .content2 {
+      min-height: 49vh;
+      background-color: #b1dbf4;
+      padding-right: .23rem;
+      padding-top: .23rem;
+    }
+    
+    .p-box {
+      margin: 0 0 .23rem .23rem;
+      background-color: #fff;
+      border-radius: 5px;
+      padding: .1rem;
+    }
+    
+    .top {
+      background-image: url(images/top.png);
+      height: .64rem;
+      width: 2.56rem;
+      background-size: cover;
+      font-size: .22rem;
+      text-align: center;
+      line-height: 0.5rem;
+      margin: 0 auto;
+    }
+    
+    .img {
+      width: 2.36rem;
+      height: 1.53rem;
+      margin: 0 auto;
+      overflow: hidden;
+      margin-top: .1rem;
+    }
+    
+    .bottom {
+      font-size: .18rem;
+      padding: .1rem;
+    }
+    
+    .bottom p {
+      margin: 0;
+    }
+    
+    .tp {
+      width: 100%;
+      margin-top: 0.06rem;
+      text-align: center;
+    }
+    
+    .vote {
+      font-size: 0.20rem;
+      text-align: center;
+      background-color: #ee752e;
+      color: #fff;
+      line-height: 2em;
+    }
+    
+    .footer {
+      font-size: 0.18rem;
+      text-align: center;
+      background-color: #b1dbf4;
+      line-height: 3em;
+      color: #666;
+    }
+    
+    .c-title {
+      min-height: 0.3rem;
+      text-align: center;
+      font-size: 0.3rem;
+      padding: 0.1rem 0;
+    }
+    
+    .c-title img {
+      max-width: 100%;
+    }
+  </style>
+  <script>
+    var deviceWidth = document.documentElement.clientWidth;
+    if (deviceWidth > 640) deviceWidth = 640;
+    document.documentElement.style.fontSize = deviceWidth / 6.4 + 'px';
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="header-nav">
+      <div class="header">
+        <img src="{$vote.image}" alt="" class="pure-img">
+      </div>
+      <div class="pure-g nav">
+        <div class="pure-u-1-4">
+          <router-link to="/">投票规则</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content2/{$vote.id}">参选作品</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content3/{$vote.id}">获奖作品</router-link>
+        </div>
+        <div class="pure-u-1-4">
+          <router-link to="/content4">奖品设置</router-link>
+        </div>
+      </div>
+    </div>
+    <router-view></router-view>
+    <div class="footer"><?php echo date("Y-m-d"); ?></div>
+  </div>
+  <script src="http://cdn.bootcss.com/vue/2.3.3/vue.js"></script>
+  <script src="http://cdn.bootcss.com/vue-router/2.5.3/vue-router.min.js"></script>
+  <script src="http://cdn.bootcss.com/axios/0.16.1/axios.min.js"></script>
+  <script type="text/x-template" id="content">
+    <div class="t1">
+      <div class="pure-g down">
+        <div class="pure-u-1-4"><img src="__STATIC__/images/arrow_down.png" alt=""></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+      </div>
+      <div class="content">
+        <div class="inslide">
+          ddd
+          <p>�ԡ�ī����� �Ļ���Ϫ��Ϊ���⣬�������ݽ���������ʱ����Ϣ������Ʒζ������ѧ�������ص���������Ȥ�滭���鷨��Ʒ������Լ���ѧϰ����ߵ� ���������Լ��ԡ��й��Ρ�����ʶ����ӳ����ѧ�� ��ѧϰ�����Ͷ���������ľ����ò��
+          </p>
+          <p>ͶƱʱ�䣺6��3�գ�����08:00����6��8�գ�����12�㣩</p>
+          <p style="color:red">ͶƱ����</p>
+          <p style="color:red">1��ÿ��ÿ��ÿ�˿�Ͷ5Ʊ��</p>
+          <p style="color:red">2��ͬһ��Ʒÿ��ֻ��Ͷ1Ʊ��</p>
+          <p style="color:red">3��ÿ��ÿ�칲��20Ʊ����Ͷ��ϲ������Ʒ����</p>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="content4">
+    <div class="t1">
+      <div class="pure-g down">
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"><img src="__STATIC__/images/arrow_down.png" alt=""></div>
+      </div>
+      <div class="content">
+        <div class="inslide">
+          aaa
+          <p>�滭A�顢�滭B�顢�滭C����鷨�鹲���� ÿ����ѡ��5���������������Ʒ�Ǽ�ֵ200Ԫ�� ������Ʒ��װ�ͼ�ֵ100Ԫ��ͼ��һ�ס�</p>
+          <p>���һ�Ƚ���Ʒ��ѡ�֣������Ļ�����֯���Ƽ���Ʒ�μӹ����С����֮�ġ�ϵ�л��ʮ��԰�� ��2017�ٶ��黭������</p>
+          <p>�ֳ���ѡ��������һ���������Ƚ��������� ������ÿ10������7�˻񽱣��ȼ��������������� �����������߼�������ʦ�䷢��֤�����ʹ�����</p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="content2">
+    <div class="t2">
+      <div class="loading" v-if="loading">加载中...</div>
+      <div class="pure-g down">
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"><img src="__STATIC__/images/arrow_down.png" alt=""></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+      </div>
+      <div class="pure-g nav nav2">
+        <foreach name="votecate" item="cate" >
+          <?php if ($key == 0){    ?>
+          <div class="pure-u-1-4 nav-active" >
+            <router-link to="/content2/{$cate.id}">{$cate.name}</router-link>
+          </div>
+          <?php }else{ ?>
+          <div class="pure-u-1-4 " >
+            <router-link to="/content2/{$cate.id}">{$cate.name}</router-link>
+          </div>
+          <?php }?>
+        </foreach>
+      </div>
+      <!--<div class="vote">����ÿ����Ͷ5Ʊ��ͬһ��Ʒÿ��ֻ��ͶһƱ</div>-->
+      <div class="content2">
+        <div class="pure-g">
+          <div class="pure-u-1-2" v-for="item in lists">
+            <div class="p-box">
+              <div class="top">{{item.title}}</div>
+              <div class="img">
+                <router-link :to="{ name: 'id', params: { id: item.id }}"><img :src="item.SmallPhoto" alt="" class="pure-img"></router-link>
+              </div>
+              <div class="bottom">
+                <div class="pure-g">
+                  <div class="pure-u-3-5">
+                    <p>作者：{{item.name}}</p>
+                    <p>票数：{{item.vote_num}}</p>
+                  </div>
+                  <div class="pure-u-2-5">
+                    <button v-if="item.Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(item)">投票</button>
+                    <div v-else class="tp">已投</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="content3">
+    <div class="t2">
+      <div class="loading" v-if="loading">加载中...</div>
+      <div class="pure-g down">
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"></div>
+        <div class="pure-u-1-4"><img src="__STATIC__/images/arrow_down.png" alt=""></div>
+        <div class="pure-u-1-4"></div>
+      </div>
+      <div class="pure-g nav nav2">
+        <foreach name="votecate" item="cate" >
+          <?php if ($key == 0){    ?>
+          <div class="pure-u-1-4 nav-active" >
+            <router-link to="/content3/{$cate.id}">{$cate.name}</router-link>
+          </div>
+          <?php }else{ ?>
+          <div class="pure-u-1-4 " >
+            <router-link to="/content3/{$cate.id}">{$cate.name}</router-link>
+          </div>
+          <?php }?>
+        </foreach>
+      </div>
+      <div class="content2">
+        <div v-if="noPrice" style="font-size:0.3rem;text-align:center">����Ʒ����6��8�պ󹫲�</div>
+        <div class="pure-g">
+          <div class="pure-u-1-2" v-for="item in lists">
+            <div class="p-box">
+              <div class="top">{{item.Title}}</div>
+              <div class="img">
+                <a :href="item.SmallPhoto"><img :src="item.SmallPhoto" alt="" class="pure-img"></a>
+              </div>
+              <div class="bottom">
+                <div class="pure-g">
+                  <div class="pure-u-3-5">
+                    <p>作者：{{item.author}}</p>
+                    <p>票数: {{item.price}}</p>
+                  </div>
+                  <div class="pure-u-2-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script type="text/x-template" id="productInfo">
+    <div class="t2">
+      <div class="loading" v-if="loading">加载中...</div>
+      <div class="content" style="padding-top: .5rem;">
+        <div class="c-title" style="min-height: 25vh;"><img :src="lists.SmallPhoto" alt=""></div>
+        <div class="c-title">{{lists.title}}</div>
+        <div class="c-title">{{lists.name}}</div>
+        <div class="c-title" style="min-height: 0;">{{lists.price}}</div>
+        <div class="c-title" v-html="lists.ProductInfo"></div>
+        <div class="c-title">
+          <button v-if="Ifvote" class="pure-button pure-button-primary tp" v-on:click="vote(lists.id)">投票</button>
+          <div v-else class="tp">已投</div>
+        </div>
+      </div>
+    </div>
+  </script>
+  <script>
+    window.alert = function(name) {
+      var iframe = document.createElement("IFRAME");
+      iframe.style.display = "none";
+      iframe.setAttribute("src", 'data:text/plain,');
+      document.documentElement.appendChild(iframe);
+      window.frames[0].window.alert(name);
+      iframe.parentNode.removeChild(iframe);
+    };
+
+    var content = {
+      template: '#content'
+    }
+    var content4 = {
+      template: '#content4'
+    }
+
+    var content2 = {
+      template: '#content2',
+      data: function() {
+        return {
+          loading: false,
+          ClassID: null,
+          lists: [],
+          wx: 0
+        }
+      },
+      mounted: function() {
+        var self = this
+        self.getList()
+      },
+      watch: {
+        "$route": "getList"
+      },
+      methods: {
+        getList: function() {
+          var self = this
+          self.loading = true
+          axios.get('{$ajaxUrl}/getList?cateID=' + this.$route.params.ClassID)
+            .then(function(response) {
+              self.lists = []
+              var data = response.data;
+
+              for (var i in data) {
+                var selData = data[i];
+                self.lists.push(selData);
+              }
+              self.loading = false
+              wx.config({
+                debug: false,
+                appId: 'wx1b2315ac2f98ccfd',
+                timestamp: 1496841083,
+                nonceStr: 'GjHfxP7e9GgicmOI',
+                signature: '54384632d5e24c0b49ab9477ce93fc8376ce0015',
+                jsApiList: [
+                  'onMenuShareTimeline',
+                  'onMenuShareAppMessage'
+                ]
+              });
+              wx.ready(function() {
+                wx.onMenuShareAppMessage({
+                  title: '�ӻ����ڶ�ʮ�߽��ٶ��黭����',
+                  desc: '�ӻ����ڶ�ʮ�߽��ٶ��黭����ͶƱ���Ƚ����У���Ϊϲ������ƷͶһƱ��~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/tp/images/share.jpg'
+                });
+
+                wx.onMenuShareTimeline({
+                  title: '�ӻ����ڶ�ʮ�߽��ٶ��黭����ͶƱ���Ƚ����У���Ϊϲ������ƷͶһƱ��~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/tp/images/share.jpg'
+                });
+              });
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        },
+        vote: function(item) {
+          var self = this
+          self.loading = true
+          axios.get('{$ajaxUrl}/vote?ProductID=' + item.id)
+            .then(function(response) {
+              self.loading = false
+              var data = response.data
+              if (data['vote'] == '投票成功') {
+                item.Ifvote = false
+                item.vote = Number(item.vote) + 1
+              } else {
+                alert(data['vote'])
+              }
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        }
+      }
+    }
+
+    var content3 = {
+      template: '#content3',
+      data: function() {
+        return {
+          loading: false,
+          ClassID: null,
+          noPrice: false,
+          lists: []
+        }
+      },
+      mounted: function() {
+        var self = this
+        self.getList()
+      },
+      watch: {
+        "$route": "getList"
+      },
+      methods: {
+        getList: function() {
+          var self = this
+          self.loading = true
+          axios.get('http://whyy.chwgx.gov.cn/tp/ajax2.php?ClassID=' + this.$route.params.ClassID)
+            .then(function(response) {
+              self.lists = []
+              var data = response.data;
+              if (data == null) {
+                self.noPrice = true
+              }
+              for (var i in data) {
+                var selData = data[i];
+                self.lists.push(selData);
+              }
+              self.loading = false
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        }
+      }
+    }
+
+    var productInfo = {
+      template: '#productInfo',
+      data: function() {
+        return {
+          Ifvote: true,
+          loading: false,
+          lists: []
+        }
+      },
+      mounted: function() {
+        var self = this
+        self.getList()
+      },
+      watch: {
+        "$route": "getList"
+      },
+      methods: {
+        getList: function() {
+          var self = this
+          self.loading = true
+          axios.get('{$ajaxUrl}/getDetail?id=' + this.$route.params.id)
+            .then(function(response) {
+              var data = response.data;
+              self.lists = response.data;
+              self.loading = false
+              wx.config({
+                debug: false,
+                appId: 'wx1b2315ac2f98ccfd',
+                timestamp: 1496841083,
+                nonceStr: 'GjHfxP7e9GgicmOI',
+                signature: '54384632d5e24c0b49ab9477ce93fc8376ce0015',
+                jsApiList: [
+                  'onMenuShareTimeline',
+                  'onMenuShareAppMessage'
+                ]
+              });
+              wx.ready(function() {
+                wx.onMenuShareAppMessage({
+                  title: '�ӻ����ڶ�ʮ�߽��ٶ��黭�ֳ�����',
+                  desc: '����' + data['author'] + '�������ڲμӴӻ����ڶ�ʮ�߽��ٶ��黭��������Ϊ��ͶһƱ��~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/' + data['SmallPhoto']
+                });
+
+                wx.onMenuShareTimeline({
+                  title: '����' + data['author'] + '�������ڲμӴӻ����ڶ�ʮ�߽��ٶ��黭��������Ϊ��ͶһƱ��~',
+                  link: '',
+                  imgUrl: 'http://whyy.chwgx.gov.cn/' + data['SmallPhoto']
+                });
+              });
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        },
+        vote: function(id) {
+          var self = this
+          self.loading = true
+          axios.get('{$ajaxUrl}/vote?ProductID=' + id)
+            .then(function(response) {
+              self.loading = false
+              var data = response.data
+              if (data['vote'] == '投票成功') {
+                self.Ifvote = false
+              } else {
+                alert(data['vote'])
+              }
+            })
+            .catch(function(response) {
+              console.log(response)
+            })
+        }
+      }
+    }
+
+    var router = new VueRouter({
+      routes: [{
+          path: '/',
+          component: content
+        },
+        {
+          path: '/content4',
+          component: content4
+        },
+        {
+          path: '/productInfo/:id',
+          name: 'id',
+          component: productInfo
+        },
+        {
+          path: '/content3/:ClassID',
+          name: 'ClassID',
+          component: content3
+        },
+        {
+          path: '/content2/:ClassID',
+          name: 'ClassID',
+          component: content2
+        }
+      ]
+    })
+
+    new Vue({
+      el: '#app',
+      router: router
+    })
+  </script>
+
+  <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+  <script>
+  </script>
+</body>
+
+</html>
