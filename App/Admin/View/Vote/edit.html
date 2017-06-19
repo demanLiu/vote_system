@@ -12,6 +12,33 @@
                </div>
             </div>
            <div class="form-row">
+               <div class="form-label col-md-2"><label>投票规则：</label>
+               </div>
+               <div class="form-input col-md-7">
+                   <textarea name="desc" style="width:auto;"  class="j-content" uploadJson="{:U('File/ke_upimg')}" fileManagerJson="{:U('File/editorfilemanager')}"  minheight="200">{$info.desc}</textarea>
+               </div>
+           </div>
+           <div class="form-row">
+           </div>
+           <div class="form-row">
+               <div class="form-label col-md-2"><label>奖品设置：</label>
+               </div>
+               <div class="form-input col-md-7">
+                   <textarea name="prize_desc" style="width:auto;"  class="j-content" uploadJson="{:U('File/ke_upimg')}" fileManagerJson="{:U('File/editorfilemanager')}"  minheight="200">{$info.prize_desc}</textarea>
+               </div>
+           </div>
+           <div class="form-row">
+           </div>
+           <div class="form-row">
+               <div class="form-label col-md-2"><label>每组中奖人数：</label>
+               </div>
+               <div class="form-input col-md-2">
+                   <input type="text" size="3" class="validate[required,minSize[1]] required"  name="per_prize_num" id="j_prize_num" value="{$info.per_prize_num}" >
+               </div>
+           </div>
+           <div class="form-row">
+           </div>
+           <div class="form-row">
                <div class="form-label col-md-2"><label>开始时间：</label>
                </div>
                <div class="form-input col-md-2">

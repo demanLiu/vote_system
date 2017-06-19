@@ -22,12 +22,17 @@ CREATE TABLE `zs_vote` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `desc` varchar(2048) NOT NULL,
+  `per_prize_num` int(11) DEFAULT '3',
+  `prize_desc` varchar(2048) NOT NULL DEFAULT '',
   `created_at` int(11) DEFAULT NULL,
   `end_at` int(11) DEFAULT NULL,
   `status` tinyint(4) DEFAULT '1',
   `start_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 CREATE TABLE `zs_votecate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

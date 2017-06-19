@@ -198,14 +198,7 @@
       </div>
       <div class="content">
         <div class="inslide">
-          ddd
-          <p>�ԡ�ī����� �Ļ���Ϫ��Ϊ���⣬�������ݽ���������ʱ����Ϣ������Ʒζ������ѧ�������ص���������Ȥ�滭���鷨��Ʒ������Լ���ѧϰ����ߵ� ���������Լ��ԡ��й��Ρ�����ʶ����ӳ����ѧ�� ��ѧϰ�����Ͷ���������ľ����ò��
-          </p>
-          <p>ͶƱʱ�䣺6��3�գ�����08:00����6��8�գ�����12�㣩</p>
-          <p style="color:red">ͶƱ����</p>
-          <p style="color:red">1��ÿ��ÿ��ÿ�˿�Ͷ5Ʊ��</p>
-          <p style="color:red">2��ͬһ��Ʒÿ��ֻ��Ͷ1Ʊ��</p>
-          <p style="color:red">3��ÿ��ÿ�칲��20Ʊ����Ͷ��ϲ������Ʒ����</p>
+          {$vote.desc}
         </div>
       </div>
     </div>
@@ -220,11 +213,7 @@
       </div>
       <div class="content">
         <div class="inslide">
-          aaa
-          <p>�滭A�顢�滭B�顢�滭C����鷨�鹲���� ÿ����ѡ��5���������������Ʒ�Ǽ�ֵ200Ԫ�� ������Ʒ��װ�ͼ�ֵ100Ԫ��ͼ��һ�ס�</p>
-          <p>���һ�Ƚ���Ʒ��ѡ�֣������Ļ�����֯���Ƽ���Ʒ�μӹ����С����֮�ġ�ϵ�л��ʮ��԰�� ��2017�ٶ��黭������</p>
-          <p>�ֳ���ѡ��������һ���������Ƚ��������� ������ÿ10������7�˻񽱣��ȼ��������������� �����������߼�������ʦ�䷢��֤�����ʹ�����</p>
-          </p>
+          {$vote.prize_desc}
         </div>
       </div>
     </div>
@@ -301,19 +290,20 @@
         </foreach>
       </div>
       <div class="content2">
-        <div v-if="noPrice" style="font-size:0.3rem;text-align:center">����Ʒ����6��8�պ󹫲�</div>
+        <div v-if="noPrice" style="font-size:0.3rem;text-align:center">投票还没有结束</div>
         <div class="pure-g">
           <div class="pure-u-1-2" v-for="item in lists">
             <div class="p-box">
-              <div class="top">{{item.Title}}</div>
+              <div class="top">{{item.title}}</div>
               <div class="img">
                 <a :href="item.SmallPhoto"><img :src="item.SmallPhoto" alt="" class="pure-img"></a>
               </div>
               <div class="bottom">
                 <div class="pure-g">
                   <div class="pure-u-3-5">
-                    <p>作者：{{item.author}}</p>
-                    <p>票数: {{item.price}}</p>
+                    <p>作者：{{item.name}}</p>
+                    <p>票数: {{item.vote_num}}</p>
+                    <p>最佳人气奖</p>
                   </div>
                   <div class="pure-u-2-5"></div>
                 </div>
@@ -390,10 +380,10 @@
               self.loading = false
               wx.config({
                 debug: false,
-                appId: {$signPackage['appId']},
-                timestamp:{$signPackage['timestamp']},
-                nonceStr: {$signPackage['nonceStr']},
-                signature:{$signPackage['signature']},
+                appId: "{$signPackage['appId']}",
+                timestamp:"{$signPackage['timestamp']}",
+                nonceStr: "{$signPackage['nonceStr']}",
+                signature:"{$signPackage['signature']}",
                 jsApiList: [
                   'onMenuShareTimeline',
                   'onMenuShareAppMessage'
@@ -460,11 +450,11 @@
         getList: function() {
           var self = this
           self.loading = true
-          axios.get('http://whyy.chwgx.gov.cn/tp/ajax2.php?ClassID=' + this.$route.params.ClassID)
+          axios.get('{$ajaxUrl}/getRank?cateID=' + this.$route.params.ClassID)
             .then(function(response) {
               self.lists = []
               var data = response.data;
-              if (data == null) {
+              if (data == '') {
                 self.noPrice = true
               }
               for (var i in data) {
@@ -507,10 +497,10 @@
               self.loading = false
               wx.config({
                 debug: false,
-                appId: {$signPackage['appId']},
-                timestamp:{$signPackage['timestamp']},
-                nonceStr: {$signPackage['nonceStr']},
-                signature:{$signPackage['signature']},
+                appId: "{$signPackage['appId']}",
+                timestamp:"{$signPackage['timestamp']}",
+                nonceStr: "{$signPackage['nonceStr']}",
+                signature:"{$signPackage['signature']}",
                 jsApiList: [
                   'onMenuShareTimeline',
                   'onMenuShareAppMessage'

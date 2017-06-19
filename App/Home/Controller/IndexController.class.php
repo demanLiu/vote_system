@@ -9,9 +9,9 @@ class IndexController extends Controller{
     public function __construct()
     {
         parent::__construct();
-        $this->appid = "wx96aa2fdc63463cd0";
-        $this->secret = "7be7fbf23710c04bade010d43fdb32b5";
-        $this->hostUrl = 'http://afa2b98b.ngrok.io/Home/Index/lists?id=4';
+        $this->appid = C('WXAPPID');//"wx96aa2fdc63463cd0";
+        $this->secret = C('WXAPPSECRET'); // "7be7fbf23710c04bade010d43fdb32b5";
+        $this->hostUrl = C('WXHOST').'/Home/Index/lists?id=4';
         session_start();
     }
 
@@ -67,6 +67,22 @@ class IndexController extends Controller{
     {
         $cate_id = I('cateID')?I('cateID'):1;
         $member = M('Votemember')->where(['group_id'=>$cate_id])->select();
+        foreach($member as &$item){
+            $item['SmallPhoto'] = getThumbImageById($item['image']);
+            $item['Ifvote'] = $this->checkIsVote($item['id'],$_SESSION['openID']);
+        }
+        echo json_encode($member);
+    }
+    public function getRank()
+    {
+        $cate_id = I('cateID')?I('cateID'):1;
+        $votecate = M('votecate')->where(['id'=>$cate_id])->find();
+        $vote = M('vote')->where(['id'=>$votecate['vote_id']])->find();
+        if(time()<$vote['end_at']){
+            echo json_encode('');
+            return ;
+        }
+        $member = M('Votemember')->where(['group_id'=>$cate_id])->order('vote_num desc')->limit($vote['per_prize_num'])->select();
         foreach($member as &$item){
             $item['SmallPhoto'] = getThumbImageById($item['image']);
             $item['Ifvote'] = $this->checkIsVote($item['id'],$_SESSION['openID']);
