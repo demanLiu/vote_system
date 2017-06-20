@@ -9,9 +9,9 @@ class IndexController extends Controller{
     public function __construct()
     {
         parent::__construct();
-        $this->appid = C('WXAPPID');//"wx96aa2fdc63463cd0";
-        $this->secret = C('WXAPPSECRET'); // "7be7fbf23710c04bade010d43fdb32b5";
-        $this->hostUrl = C('WXHOST').'/Home/Index/lists?id=4';
+        $this->appid = $this->getConfig('WXAPPID');//"wx96aa2fdc63463cd0";
+        $this->secret = $this->getConfig('WXAPPSECRET'); // "7be7fbf23710c04bade010d43fdb32b5";
+        $this->hostUrl = $this->getConfig('WXHOST').'/Home/Index/lists?id=4';
         session_start();
     }
 
@@ -32,6 +32,7 @@ class IndexController extends Controller{
         $this->assign('vote',$vote);
         $this->assign('votecate',$votecate);
         $this->assign('ajaxUrl','/Index');
+        $this->assign('host', $this->getConfig('WXHOST'));
         $jssdk = new JSSDK($this->appid, $this->secret);
         $signPackage = $jssdk->GetSignPackage();
         $this->assign('signPackage',$signPackage);
@@ -121,5 +122,10 @@ class IndexController extends Controller{
         $map['is_vote'] = 1;
         $r = M('votelog')->where($map)->find();
         return $r?false:true;
+    }
+    public function getConfig($name)
+    {
+        $result = M('config')->where(['name'=>$name])->find();
+        return $result?$result['value']:'';
     }
 }

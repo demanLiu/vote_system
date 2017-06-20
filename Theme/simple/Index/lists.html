@@ -391,16 +391,16 @@
               });
               wx.ready(function() {
                 wx.onMenuShareAppMessage({
-                  title: '�ӻ����ڶ�ʮ�߽��ٶ��黭����',
-                  desc: '�ӻ����ڶ�ʮ�߽��ٶ��黭����ͶƱ���Ƚ����У���Ϊϲ������ƷͶһƱ��~',
+                  title: '{$vote.title}',
+                  desc: '我正在参加{$vote.title},请为我投上一票',
                   link: '',
-                  imgUrl: 'http://whyy.chwgx.gov.cn/tp/images/share.jpg'
+                  imgUrl: '{$vote.image}'
                 });
 
                 wx.onMenuShareTimeline({
-                  title: '�ӻ����ڶ�ʮ�߽��ٶ��黭����ͶƱ���Ƚ����У���Ϊϲ������ƷͶһƱ��~',
+                  title: '{$vote.title}',
                   link: '',
-                  imgUrl: 'http://whyy.chwgx.gov.cn/tp/images/share.jpg'
+                  imgUrl: '{$vote.image}'
                 });
               });
             })
@@ -508,16 +508,16 @@
               });
               wx.ready(function() {
                 wx.onMenuShareAppMessage({
-                  title: '�ӻ����ڶ�ʮ�߽��ٶ��黭�ֳ�����',
-                  desc: '����' + data['author'] + '�������ڲμӴӻ����ڶ�ʮ�߽��ٶ��黭��������Ϊ��ͶһƱ��~',
+                  title: '{$vote.title}',
+                  desc: '作者:' + data['name'] + '请为我投票',
                   link: '',
-                  imgUrl: 'http://whyy.chwgx.gov.cn/' + data['SmallPhoto']
+                  imgUrl: '{$host}//' + data['SmallPhoto']
                 });
 
                 wx.onMenuShareTimeline({
-                  title: '����' + data['author'] + '�������ڲμӴӻ����ڶ�ʮ�߽��ٶ��黭��������Ϊ��ͶһƱ��~',
+                  title: '作者：' + data['name'] + '请为我投票',
                   link: '',
-                  imgUrl: 'http://whyy.chwgx.gov.cn/' + data['SmallPhoto']
+                  imgUrl: '{$host}//' + data['SmallPhoto']
                 });
               });
             })
