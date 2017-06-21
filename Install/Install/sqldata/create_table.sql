@@ -546,3 +546,53 @@ CREATE TABLE `zswin_focus` (
   `type` tinyint(4) DEFAULT '0' COMMENT '0用户1文章2标签3分类',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '安装时间'
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='用户关注表';
+
+DROP TABLE IF EXISTS `zswin_vote`;
+CREATE TABLE `zswin_vote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `desc` varchar(2048) NOT NULL,
+  `per_prize_num` int(11) DEFAULT '3',
+  `prize_desc` varchar(2048) NOT NULL DEFAULT '',
+  `created_at` int(11) DEFAULT NULL,
+  `end_at` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  `start_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+DROP TABLE IF EXISTS `zswin_votecate`;
+CREATE TABLE `zswin_votecate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) DEFAULT '',
+  `vote_id` int(11) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `zswin_votemember`;
+CREATE TABLE `zswin_votemember` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `group_id` int(11) DEFAULT NULL,
+  `vote_num` int(11) DEFAULT '0',
+  `status` tinyint(4) DEFAULT NULL,
+  `image` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ;
+
+DROP TABLE IF EXISTS `zswin_votelog`;
+CREATE TABLE `zswin_votelog` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `object_id` varchar(255) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `is_vote` tinyint(4) NOT NULL,
+	member_id int,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_object_id` (object_id, member_id, updated_at) USING HASH
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

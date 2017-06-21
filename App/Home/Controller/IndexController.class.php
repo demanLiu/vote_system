@@ -11,7 +11,8 @@ class IndexController extends Controller{
         parent::__construct();
         $this->appid = $this->getConfig('WXAPPID');//"wx96aa2fdc63463cd0";
         $this->secret = $this->getConfig('WXAPPSECRET'); // "7be7fbf23710c04bade010d43fdb32b5";
-        $this->hostUrl = $this->getConfig('WXHOST').'/Home/Index/lists?id=4';
+        $id = $this->getConfig('ACTIVIATIONID');
+        $this->hostUrl = $this->getConfig('WXHOST').'/Home/Index/lists?id='.$id;
         session_start();
     }
 
@@ -21,7 +22,7 @@ class IndexController extends Controller{
     }
     public function lists(){
         //test
-        $_SESSION['openID'] = 1111;
+//        $_SESSION['openID'] = 1111;
         if(!$_SESSION['openID']){
             $this->getOpenID();
         }
